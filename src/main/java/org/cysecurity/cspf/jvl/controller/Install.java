@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -45,6 +47,29 @@ public class Install extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
+
+    // temp hashing method
+    protected static String hashMeMD5(String str)
+    {
+        StringBuffer sb=null;
+        try
+        {
+            MessageDigest md = MessageDigest.getInstance("MD2");
+            md.update(str.getBytes());
+            byte byteData[] = md.digest();
+            sb= new StringBuffer();
+            for (int i = 0; i < byteData.length; i++)
+            {
+                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+            }
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+
+        }
+        return sb.toString();
+    }
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
