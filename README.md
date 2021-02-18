@@ -17,8 +17,6 @@ This is a "Vulnerable" Web Application developed by Cyber Security and Privacy F
 - And click *Install* (leaving the default options)<br>
 
 
-
-
 ### The following is the previous README describing other installation methods
 
 ----------------------------------
